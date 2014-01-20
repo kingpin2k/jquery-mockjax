@@ -179,7 +179,9 @@
 						if( mockHandler.isTimeout) {
 							this.status = -1;
 						}
-						onReady.call( this, mockHandler.isTimeout ? 'timeout' : undefined );
+						Em.run(function () {
+							onReady.call(self, mockHandler.isTimeout ? 'timeout' : undefined);
+						});
 					} else if ( mockHandler.isTimeout ) {
 						// Fix for 1.3.2 timeout to keep success from firing.
 						this.status = -1;
